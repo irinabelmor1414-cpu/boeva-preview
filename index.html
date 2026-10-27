@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Яна Боева - психолог</title>
+<meta name="description" content="Яна Боева, клинический психолог. Консультации, арт-терапия, семинары для родителей. Запись и оплата онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;500;600&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* Стиль по образцу: ч/б фото, огромный узкий капс, тёмные блоки с тонкой сеткой.
+   60/30/10: светлый тёплый серый / графит / мятный акцент. Цвета направлений в календаре - приглушённые метки. */
+:root {
+  --paper: #edebe6;       /* 60 */
+  --paper-2: #e3e0d9;
+  --ink: #1e1f1d;         /* 30 */
+  --ink-2: #2a2b28;
+  --line-dark: rgba(237, 235, 230, .09);
+  --line: #cfcbc2;
+  --muted: #6f6e69;
+  --muted-dark: #a8a69f;
+  --mint: #cdebd9;        /* 10 */
+  --mint-ink: #1e1f1d;
+  --c-consult: #cdebd9;   /* консультации */
+  --c-art: #e2c391;       /* арт-терапия */
+  --c-sem: #b9c7d3;       /* семинары */
+  --todo-bg: #fff1c7;
+  --todo-ink: #7a5a00;
+  --display: "Oswald", "Arial Narrow", sans-serif;
+  --body: "Manrope", -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 500; text-transform: uppercase; line-height: 1; letter-spacing: .005em; }
+p { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.tag { font-family: var(--display); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.dark .tag { color: var(--muted-dark); }
+.small-caps { font-family: var(--display); font-weight: 300; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; line-height: 1.5; }
+.todo { background: var(--todo-bg); color: var(--todo-ink); padding: 0 .3em; border-radius: 3px; }
+body.clean .todo { background: none; color: inherit; padding: 0; }
+body.clean .todo-hint, body.clean .draftbar-note { display: none; }
+
+.btn { display: inline-flex; align-items: center; gap: 14px; padding: 14px 22px; border: 0; cursor: pointer; text-decoration: none;
+  font-family: var(--display); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper); transition: transform .15s, background .15s; }
+.btn::after { content: "→"; font-family: var(--body); letter-spacing: 0; }
+.btn:hover { transform: translateX(3px); }
+.btn.mint { background: var(--mint); color: var(--mint-ink); }
+.btn.ghost { background: transparent; color: inherit; box-shadow: inset 0 0 0 1px currentColor; }
+.btn.noarrow::after { content: none; }
+
+/* полоса черновика */
+.draftbar { background: var(--todo-bg); color: var(--todo-ink); font-size: 13px; }
+.draftbar .wrap { display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap; padding-block: 7px; }
+.draftbar label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; font-weight: 600; }
+
+/* шапка как на образце: меню слева, имя по центру, пункты справа */
+header.top { position: sticky; top: 0; z-index: 20; background: rgba(237, 235, 230, .94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; min-height: 56px; }
+.nav-l, .nav-r { display: flex; align-items: stretch; }
+.nav-r { justify-content: flex-end; }
+.nav-l a, .nav-r a { display: flex; align-items: center; padding: 0 18px; border-right: 1px solid var(--line); text-decoration: none; font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.nav-r a { border-right: 0; border-left: 1px solid var(--line); }
+.nav-l a:hover, .nav-r a:hover { background: var(--paper-2); }
+.brand { display: grid; place-items: center; text-align: center; padding: 6px 24px; text-decoration: none; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+.brand b { font-family: var(--display); font-weight: 300; font-size: 19px; letter-spacing: .24em; }
+.brand small { font-family: var(--display); font-weight: 300; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 900px) {
+  header.top .wrap { grid-template-columns: auto 1fr auto; }
+  .nav-l a:not(.burger), .nav-r a:not(.cta-top) { display: none; }
+  .brand { border: 0; }
+}
+.burger { font-size: 18px !important; letter-spacing: 0 !important; }
+
+/* первый экран */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1fr minmax(280px, 520px) 1fr; align-items: end; min-height: min(760px, 92vh); gap: 0; }
+.hero-photo { grid-column: 2; grid-row: 1; align-self: end; position: relative; z-index: 1; }
+.hero-photo::before, .hero-photo::after { content: ""; position: absolute; top: 0; bottom: 0; width: 22%; z-index: 1; pointer-events: none; }
+.hero-photo::before { left: 0; background: linear-gradient(90deg, var(--paper), transparent); }
+.hero-photo::after { right: 0; background: linear-gradient(-90deg, var(--paper), transparent); }
+.hero-photo img { width: 100%; height: auto; filter: grayscale(1) contrast(1.06) brightness(1.04);
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); }
+.ghost-photo { position: absolute; left: -6%; top: 0; width: 38%; opacity: .07; filter: grayscale(1) blur(1px); pointer-events: none; z-index: 0; }
+.hero-title { position: absolute; left: 0; right: 0; top: 36%; z-index: 2; display: flex; justify-content: space-between; pointer-events: none;
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.hero-title span { font-family: var(--display); text-transform: uppercase; line-height: .82; font-size: clamp(64px, 14vw, 210px); }
+.hero-title .w1 { font-weight: 600; letter-spacing: -.01em; }
+.hero-title .w2 { font-weight: 600; letter-spacing: -.01em; }
+.hero-title .w2 i { font-style: normal; color: #9fd4b6; }
+.hero-side { grid-row: 1; align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; padding-block: 34px 44px; position: relative; z-index: 3; }
+.hero-side.l { grid-column: 1; }
+.hero-side.r { grid-column: 3; align-items: flex-end; text-align: right; }
+.hero-side.r .hero-format { justify-items: end; }
+.hero-side .lead { max-width: 250px; font-size: 15px; color: var(--ink-2); }
+.dash { display: block; width: 26px; height: 1px; background: var(--ink); margin-top: 10px; }
+.hero-side.r .dash { margin-left: auto; }
+.hero-format { display: grid; gap: 2px; margin-bottom: 18px; }
+.hero-format b { font-family: var(--display); font-weight: 500; font-size: 15px; letter-spacing: .06em; }
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; min-height: 0; }
+  .hero-photo { grid-column: 1; grid-row: 2; max-width: 440px; margin: 0 auto; }
+  .hero-side.l { grid-column: 1; grid-row: 3; padding-block: 18px 30px; gap: 18px; }
+  .hero-side.r { grid-column: 1; grid-row: 4; align-items: flex-start; text-align: left; padding-block: 0 30px; }
+  .hero-side.r > div:first-child { display: none; }
+  .hero-side.r .dash { margin-left: 0; }
+  .hero-side.r .hero-format, .hero-side.r > div { justify-items: start !important; }
+  .hero-photo::before, .hero-photo::after { width: 12%; }
+  .hero-title { position: relative; top: auto; grid-row: 1; padding: 22px 0 0; margin-bottom: -26px; }
+  .hero .wrap { padding-top: 0; }
+  .ghost-photo { display: none; }
+}
+
+/* тёмные блоки с сеткой */
+.dark { background: var(--ink); color: var(--paper);
+  background-image: linear-gradient(var(--line-dark) 1px, transparent 1px), linear-gradient(90deg, var(--line-dark) 1px, transparent 1px);
+  background-size: 64px 64px; }
+section { padding-block: clamp(64px, 9vw, 110px); }
+.split { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(28px, 6vw, 90px); align-items: end; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+.big { font-size: clamp(34px, 5.2vw, 64px); line-height: 1.02; font-weight: 500; }
+.big em { font-style: normal; color: var(--mint); }
+.split-text { display: grid; gap: 22px; color: var(--muted-dark); max-width: 460px; }
+.split-text p strong { color: var(--paper); font-weight: 500; }
+
+/* фото-карточки направлений (5 кадров как на образце, у нас - направления) */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 56px; }
+@media (max-width: 860px) { .cards { grid-template-columns: 1fr; } }
+.card { display: flex; flex-direction: column; gap: 14px; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; color: inherit; }
+.card .ph { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #111; }
+.card .ph img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); transform: scale(var(--z, 1.4)); transform-origin: var(--o, 50% 30%); transition: transform .5s; }
+.card:hover .ph img { transform: scale(calc(var(--z, 1.4) + .06)); }
+.card .ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: var(--c); }
+.card .cap { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.card h3 { font-size: 22px; font-weight: 500; }
+.card .meta { color: var(--muted-dark); font-size: 14px; }
+.card .more { font-family: var(--display); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--mint); }
+.photo-note { margin-top: 14px; font-size: 13px; color: var(--muted-dark); }
+
+/* светлый блок «С чем работаю» */
+.work { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 6vw, 80px); }
+@media (max-width: 860px) { .work { grid-template-columns: 1fr; } }
+.work h2 { font-size: clamp(30px, 4vw, 50px); line-height: 1.04; }
+.wlist { border-top: 1px solid var(--ink); }
+.wlist div { display: grid; grid-template-columns: 54px 1fr; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.wlist span { font-family: var(--display); font-weight: 300; color: var(--muted); }
+.notwith { margin-top: 26px; font-size: 14px; color: var(--muted); padding-left: 14px; border-left: 1px solid var(--ink); }
+
+/* календарь */
+.cal-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+.cal-head h2 { font-size: clamp(34px, 5vw, 60px); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--line-dark); background: transparent; cursor: pointer; font-family: var(--display); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--paper); }
+.chip i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.chip[aria-pressed="false"] { opacity: .4; }
+.calendar { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0; border: 1px solid var(--line-dark); background: rgba(0,0,0,.25); }
+@media (max-width: 980px) { .calendar { grid-template-columns: 1fr; } }
+.month { padding: 22px; border-right: 1px solid var(--line-dark); min-width: 0; }
+@media (max-width: 980px) { .month { border-right: 0; border-bottom: 1px solid var(--line-dark); } }
+.month-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.month-bar b { font-family: var(--display); font-weight: 300; font-size: 26px; text-transform: uppercase; letter-spacing: .06em; }
+.month-bar button { width: 40px; height: 40px; border: 1px solid var(--line-dark); background: none; cursor: pointer; font-size: 18px; color: var(--paper); }
+.month-bar button:disabled { opacity: .25; cursor: default; }
+.grid7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.wd { text-align: center; font-family: var(--display); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-dark); padding-bottom: 6px; }
+.day { aspect-ratio: 1 / .9; border: 1px solid transparent; background: none; color: #5b5a55; padding: 6px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; font-variant-numeric: tabular-nums; font-family: var(--display); font-size: 17px; min-width: 0; }
+.day.has { color: var(--paper); border-color: var(--line-dark); cursor: pointer; background: rgba(255,255,255,.02); }
+.day.has:hover { border-color: rgba(237,235,230,.35); }
+.day.sel { background: var(--paper); color: var(--ink); }
+.day.today { text-decoration: underline; text-underline-offset: 4px; }
+.dots { display: flex; gap: 3px; flex-wrap: wrap; }
+.dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.day.full .dots i { opacity: .35; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 13px; color: var(--muted-dark); }
+.legend span { display: inline-flex; gap: 7px; align-items: center; }
+.legend i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.dayplan { padding: 22px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.dayplan h3 { font-size: 24px; font-weight: 300; letter-spacing: .04em; }
+.ev { border-left: 3px solid var(--c); padding: 4px 0 4px 16px; display: grid; gap: 10px; }
+.ev .kind { font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.ev h4 { margin: 0; font-family: var(--display); font-weight: 500; font-size: 19px; text-transform: uppercase; }
+.ev .info { color: var(--muted-dark); font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.slot { border: 1px solid rgba(237,235,230,.35); background: none; color: var(--paper); padding: 9px 14px; cursor: pointer; font-family: var(--display); font-size: 15px; letter-spacing: .05em; font-variant-numeric: tabular-nums; }
+.slot:hover:not(:disabled) { background: var(--c); color: var(--ink); border-color: var(--c); }
+.slot:disabled { opacity: .35; text-decoration: line-through; cursor: default; }
+.empty { color: var(--muted-dark); font-size: 15px; }
+.cal-note { margin-top: 18px; font-size: 13px; color: var(--muted-dark); }
+
+/* как это работает - телефоны с сообщениями */
+.how { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink); margin-top: 40px; }
+@media (max-width: 900px) { .how { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .how { grid-template-columns: 1fr; } }
+.how div { padding: 22px 22px 22px 0; display: grid; gap: 8px; align-content: start; }
+.how b { font-family: var(--display); font-weight: 300; font-size: 40px; line-height: 1; }
+.how h3 { font-size: 18px; }
+.how p { color: var(--muted); font-size: 15px; }
+.phones { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+@media (max-width: 860px) { .phones { grid-template-columns: 1fr; } }
+.phone { background: var(--ink); color: var(--paper); padding: 18px; display: grid; gap: 12px; align-content: start; }
+.phone .who { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--display); text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: var(--muted-dark); padding-bottom: 10px; border-bottom: 1px solid var(--line-dark); }
+.msg { background: var(--ink-2); padding: 12px 14px; font-size: 14px; line-height: 1.5; border-left: 2px solid var(--mint); white-space: pre-line; }
+.msg small { display: block; font-family: var(--display); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mint); margin-bottom: 4px; }
+
+/* материалы */
+.reads { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); border-left: 1px solid var(--line-dark); margin-top: 44px; }
+@media (max-width: 900px) { .reads { grid-template-columns: 1fr; } }
+.read { padding: 24px; border-right: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); text-decoration: none; display: flex; flex-direction: column; gap: 10px; min-height: 180px; transition: background .2s; }
+.read:hover { background: rgba(255,255,255,.04); }
+.read h3 { font-size: 20px; font-weight: 500; line-height: 1.15; }
+.read p { color: var(--muted-dark); font-size: 14px; }
+.read .src { margin-top: auto; font-family: var(--display); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mint); }
+.flower { position: relative; }
+
+/* образование */
+.edu { border-top: 1px solid var(--ink); }
+.edu div { display: grid; grid-template-columns: 54px 1fr; gap: 4px 10px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.edu span { font-family: var(--display); font-weight: 300; color: var(--muted); grid-row: span 2; }
+.edu h3 { font-size: 17px; font-weight: 500; }
+.edu p { color: var(--muted); font-size: 15px; }
+
+footer { background: var(--ink); color: var(--muted-dark); font-size: 14px; }
+footer .wrap { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 28px; padding-block: 44px calc(44px + env(safe-area-inset-bottom, 0px)); }
+@media (max-width: 860px) { footer .wrap { grid-template-columns: 1fr; } }
+footer h4 { margin: 0 0 10px; font-family: var(--display); font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--paper); font-size: 14px; }
+footer .col { display: grid; gap: 6px; align-content: start; }
+footer a { color: var(--paper); }
+.sos b { color: var(--paper); font-variant-numeric: tabular-nums; }
+
+/* окна: макет Timepad и наш экран «спасибо» */
+dialog { border: 0; padding: 0; width: min(520px, calc(100vw - 24px)); background: #fff; color: #222; }
+dialog::backdrop { background: rgba(20, 21, 19, .7); }
+.tp { font-family: Arial, sans-serif; }
+.tp-head { background: #f3f3f3; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #555; }
+.tp-head b { color: #222; }
+.tp-body { padding: 20px 18px; display: grid; gap: 12px; }
+.tp-body label { display: grid; gap: 4px; font-size: 13px; color: #555; }
+.tp-body input[type=text], .tp-body input[type=tel], .tp-body input[type=email] { font: 15px Arial, sans-serif; padding: 10px 12px; border: 1px solid #ccc; border-radius: 4px; }
+.tp-body .chk { display: grid; grid-template-columns: 18px 1fr; gap: 8px; font-size: 12px; color: #666; }
+.tp-pay { background: #ff5a3c; color: #fff; border: 0; padding: 13px; border-radius: 4px; font: 600 15px Arial, sans-serif; cursor: pointer; }
+.tp-pay:disabled { opacity: .4; cursor: not-allowed; }
+.tp-sum { background: #f7f7f7; padding: 10px 12px; font-size: 14px; border-radius: 4px; }
+.tp-mark { font-size: 11px; color: #999; text-align: center; }
+.thanks { background: var(--ink); color: var(--paper); padding: 28px; display: grid; gap: 16px;
+  background-image: linear-gradient(var(--line-dark) 1px, transparent 1px), linear-gradient(90deg, var(--line-dark) 1px, transparent 1px); background-size: 48px 48px; }
+.thanks h3 { font-size: 34px; }
+.thanks p { color: var(--muted-dark); }
+.thanks .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.x { position: absolute; right: 10px; top: 8px; background: none; border: 0; font-size: 22px; cursor: pointer; color: inherit; }
+dialog > div { position: relative; }
+
+.cookie { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--paper); border-top: 1px solid var(--ink);
+  padding: 12px max(20px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+.cookie .in { max-width: 1240px; margin: 0 auto; display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 13px; }
+.toast { position: fixed; left: 50%; bottom: 80px; transform: translateX(-50%); background: var(--mint); color: var(--ink); padding: 12px 18px; font-size: 14px; z-index: 40; max-width: calc(100vw - 32px); }
+</style>
+</head>
+<body>
+
+<div class="draftbar">
+  <div class="wrap">
+    <span><b>Черновик для Яны.</b> <span class="draftbar-note">Календарь и окно Timepad работают на примерах дат. Жёлтым - что уточнить.</span></span>
+    <label for="toggleTodo"><input type="checkbox" id="toggleTodo"> Скрыть пометки</label>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="nav-l" aria-label="Разделы">
+      <a href="#napravleniya" class="burger" aria-label="Меню">≡</a>
+      <a href="#podhod">Подход</a>
+      <a href="#obo-mne">Обо мне</a>
+    </nav>
+    <a class="brand" href="#top"><b>ЯНА БОЕВА</b><small>психолог</small></a>
+    <nav class="nav-r" aria-label="Запись и контакты">
+      <a href="#raspisanie">Расписание</a>
+      <a href="#kontakty">Контакты</a>
+      <a href="#raspisanie" class="cta-top" style="background:var(--mint)">Записаться</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" style="padding:0">
+  <img class="ghost-photo" src="yana-boeva-portrait.webp" alt="" aria-hidden="true">
+  <div class="hero-title" aria-hidden="true"><span class="w1">Яна</span><span class="w2">Боева</span></div>
+  <div class="wrap">
+    <div class="hero-side l">
+      <div><p class="small-caps">Клинический психолог<br>КПТ · ACT · арт-терапия</p><span class="dash"></span></div>
+      <div style="display:grid;gap:18px">
+        <p class="lead">Можно прийти без готового запроса и начать с того, что есть.</p>
+        <div><a class="btn" href="#raspisanie">Записаться</a></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="yana-boeva-portrait.webp" width="1080" height="1448" alt="Яна Боева, клинический психолог">
+    </div>
+    <div class="hero-side r">
+      <div><p class="small-caps">Консультации<br>Арт-терапия<br>Семинары для родителей</p><span class="dash"></span></div>
+      <div style="display:grid;gap:14px;justify-items:end">
+        <div class="hero-format"><span class="small-caps">Формат консультаций</span><b>ОНЛАЙН · 50 МИНУТ · 5 500 ₽</b></div>
+        <p class="lead" style="max-width:240px">Тревога, стресс, выгорание, кризисы и трудный выбор.</p>
+        <span class="dash"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="podhod">
+  <div class="wrap">
+    <span class="tag">[ Принципы работы ]</span>
+    <div class="split" style="margin-top:22px">
+      <h2 class="big">Быть любым<br>и делать то,<br>что <em>важно</em></h2>
+      <div class="split-text">
+        <p>Работаю со взрослыми, которые сталкиваются с тревогой, вопросами карьеры, профессиональным стрессом, кризисами, трудностями выбора и самореализации.</p>
+        <p>Я работаю в когнитивно-поведенческом подходе и терапии принятия и ответственности (ACT). Вместе разбираемся, как устроена проблема, к чему вы хотите прийти и какие способы работы подходят под ваш запрос.</p>
+        <p><strong>Не обещаю волшебной таблетки.</strong> Опираюсь на то, что можно наблюдать и проверять, и приглашаю к совместному поиску реалистичных решений.</p>
+        <div><a class="btn mint" href="#kak">Как проходит работа</a></div>
+      </div>
+    </div>
+
+    <div class="cards" id="napravleniya">
+      <button class="card" data-go="consult" style="--c:var(--c-consult);--z:1;--o:50% 50%">
+        <div class="ph"><img src="foto-konsultacii.jpg" alt="Разговор на консультации: руки с блокнотом" loading="lazy"></div>
+        <div class="cap"><h3>Консультации</h3><span class="more">Окна →</span></div>
+        <p class="meta">Один на один · онлайн · 50 минут · 5 500 ₽</p>
+      </button>
+      <button class="card" data-go="art" style="--c:var(--c-art);--z:1;--o:50% 50%">
+        <div class="ph"><img src="foto-art-terapiya.jpg" alt="Кисть и акварельная палитра" loading="lazy"></div>
+        <div class="cap"><h3>Арт-терапия</h3><span class="more">Даты →</span></div>
+        <p class="meta">Мини-группа · рисовать уметь не нужно · <span class="todo">цена</span></p>
+      </button>
+      <button class="card" data-go="sem" style="--c:var(--c-sem);--z:1;--o:50% 50%">
+        <div class="ph"><img src="foto-seminary.jpg" alt="Ребёнок показывает родителям свой рисунок" loading="lazy"></div>
+        <div class="cap"><h3>Семинары для родителей</h3><span class="more">Даты →</span></div>
+        <p class="meta">Возрастные кризисы, эмоции ребёнка, границы · <span class="todo">цена</span></p>
+      </button>
+    </div>
+    <p class="photo-note">Фото: Pexels</p>
+  </div>
+</section>
+
+<section id="obo-mne">
+  <div class="wrap work">
+    <div>
+      <span class="tag">[ С чем я работаю ]</span>
+      <h2 style="margin-top:18px">Когда важно понять, что происходит и как с этим быть</h2>
+      <p class="notwith"><b>Не работаю:</b> экстренная помощь, зависимости, РПП, суицидальный риск и тяжёлые психические состояния без сопровождения врача.</p>
+    </div>
+    <div class="wlist">
+      <div><span>01</span><p>Тревога, неопределённость, страх будущего</p></div>
+      <div><span>02</span><p>Стресс, перегрузка, выгорание</p></div>
+      <div><span>03</span><p>Кризисы, перемены, сложный выбор</p></div>
+      <div><span>04</span><p>Отношения, конфликты, трудно говорить «нет»</p></div>
+      <div><span>05</span><p>Откладывание, перфекционизм, когда трудно выбрать цель и начать действовать</p></div>
+      <div><span>06</span><p>Вина, стыд, самокритика, ощущение, что вы не на своём месте</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="raspisanie">
+  <div class="wrap">
+    <div class="cal-head">
+      <div><span class="tag">[ Расписание ]</span><h2 style="margin-top:14px">Свободные окна<br>на месяц</h2></div>
+      <div class="filters" role="group" aria-label="Направления">
+        <button class="chip" data-f="consult" aria-pressed="true" style="--c:var(--c-consult)"><i></i>Консультации</button>
+        <button class="chip" data-f="art" aria-pressed="true" style="--c:var(--c-art)"><i></i>Арт-терапия</button>
+        <button class="chip" data-f="sem" aria-pressed="true" style="--c:var(--c-sem)"><i></i>Семинары</button>
+      </div>
+    </div>
+    <div class="calendar">
+      <div class="month">
+        <div class="month-bar"><button id="prev" aria-label="Предыдущий месяц">‹</button><b id="mtitle"></b><button id="next" aria-label="Следующий месяц">›</button></div>
+        <div class="grid7" id="grid"></div>
+        <div class="legend">
+          <span style="--c:var(--c-consult)"><i></i>Консультации</span>
+          <span style="--c:var(--c-art)"><i></i>Арт-терапия</span>
+          <span style="--c:var(--c-sem)"><i></i>Семинары для родителей</span>
+        </div>
+      </div>
+      <div class="dayplan" id="plan" aria-live="polite"></div>
+    </div>
+    <p class="cal-note">Запись и оплата проходят в защищённом окне Timepad: ваши данные получает только Timepad. После оплаты вы вернётесь сюда и сможете включить напоминания в Макс или Telegram. <span class="todo todo-hint">[даты - пример; на сайте будут из Timepad Яны]</span></p>
+  </div>
+</section>
+
+<section id="kak">
+  <div class="wrap">
+    <span class="tag">[ Как проходит запись ]</span>
+    <h2 class="big" style="margin-top:18px;max-width:900px">От окна в календаре<br>до напоминания</h2>
+    <div class="how">
+      <div><b>01</b><h3>Выберите время</h3><p>Отметьте направление и день, нажмите на свободное окно.</p></div>
+      <div><b>02</b><h3>Оплатите</h3><p>Имя, телефон, почта и оплата - в окне Timepad. Чек придёт на почту.</p></div>
+      <div><b>03</b><h3>Включите напоминания</h3><p>Одна кнопка: Макс или Telegram. Бот попросит поделиться номером.</p></div>
+      <div><b>04</b><h3>Приходите</h3><p>Напомним за день и за 2 часа. Ссылка на встречу - в сообщении.</p></div>
+    </div>
+    <div class="phones">
+      <div class="phone">
+        <div class="who"><span>Клиенту · Макс или Telegram</span><span>пример</span></div>
+        <div class="msg"><small>Сразу после оплаты</small>Вы записаны ✓
+Консультация · 12 ноября, 12:00 (мск)
+Билет Timepad отправлен на почту.</div>
+        <div class="msg"><small>За день</small>Завтра в 12:00 консультация с Яной Боевой. Ссылка на встречу придёт за 2 часа.</div>
+        <div class="msg"><small>За 2 часа</small>Через 2 часа встреча. Ссылка: <span class="todo">[ссылка на звонок]</span>
+Если планы изменились, напишите Яне.</div>
+      </div>
+      <div class="phone">
+        <div class="who"><span>Яне · Макс</span><span>пример</span></div>
+        <div class="msg"><small>Новая запись с сайта</small>Новая запись
+Арт-терапия «Цвет настроения» · 15 ноября, 12:00
+Анна П., +7 9•• •••-••-12
+Оплачено 3 000 ₽</div>
+        <div class="msg"><small>Каждое утро в 8:00</small>Сегодня, 12 ноября:
+10:00 - консультация (Мария К.)
+12:00 - консультация (Олег С.)
+18:00 - консультация (Ирина В.)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <span class="tag">[ Ресурсы ]</span>
+    <div class="split" style="margin-top:22px">
+      <h2 class="big">Материалы<br>для чтения</h2>
+      <p class="split-text">Мои статьи, исследования и материалы для самопомощи.</p>
+    </div>
+    <div class="reads">
+      <a class="read" href="https://www.b17.ru/article/367578/" target="_blank" rel="noopener"><h3>Профессиональный стресс и как с ним справляться</h3><p>Статья о сути феномена, принципах работы и самопомощи</p><span class="src">B17 →</span></a>
+      <a class="read" href="https://www.b17.ru/article/368350/" target="_blank" rel="noopener"><h3>Как устроена когнитивно-поведенческая терапия</h3><p>Психотехническая система КПТ</p><span class="src">B17 →</span></a>
+      <a class="read" href="https://www.b17.ru/article/371109/" target="_blank" rel="noopener"><h3>Как переключиться, успокоиться и расслабиться</h3><p>Статья о том, как помочь себе отдохнуть</p><span class="src">B17 →</span></a>
+      <a class="read" href="https://vk.com/@psiholog_boeva-chto-pochitat-chtoby-stalo-legche" target="_blank" rel="noopener"><h3>Что почитать, чтобы стало легче</h3><p>Книги и рекомендации</p><span class="src">Личный блог →</span></a>
+      <a class="read" href="https://ipran.ru/wp-content/uploads/2021/11/%D0%9F%D0%9D%D0%91_2021.pdf" target="_blank" rel="noopener"><h3>Профессиональный стресс у IT-специалистов</h3><p>Тезисы диссертации, стр. 43</p><span class="src">ИП РАН →</span></a>
+      <div class="read"><h3>Статьи об арт-терапии и для родителей</h3><p>Раздел пополняется. Яна добавляет статьи сама в кабинете сайта.</p><span class="src" style="color:var(--muted-dark)">Скоро</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap work">
+    <div>
+      <span class="tag">[ Квалификация ]</span>
+      <h2 style="margin-top:18px">Образование и подготовка</h2>
+      <p style="margin-top:18px;color:var(--muted);max-width:420px">В психологию пришла в 2018 году - через интерес к тому, как человек переживает перемены, стресс, тревогу и кризисы.</p>
+      <div style="margin-top:22px"><a class="btn ghost" href="https://psiholog-boeva.ru/documents/" target="_blank" rel="noopener">Документы</a></div>
+    </div>
+    <div class="edu">
+      <div><span>01</span><h3>Московский институт психоанализа</h3><p>Магистратура по консультативной психологии, диплом с отличием</p></div>
+      <div><span>02</span><h3>Центральная государственная медицинская академия</h3><p>Переподготовка по клинической психологии, квалификация «клинический психолог»</p></div>
+      <div><span>03</span><h3>АКПП и МГУ имени М. В. Ломоносова</h3><p>Обучение КПТ, ACT и CFT</p></div>
+      <div><span>04</span><h3>Супервизия и личная терапия</h3><p>Регулярно, как часть практики</p></div>
+      <div><span>05</span><h3><span class="todo">Арт-терапия</span></h3><p class="todo">Где училась, программа, часы</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="kontakty">
+  <div class="wrap">
+    <div class="col">
+      <h4>Яна Боева</h4>
+      <span>Клинический психолог · самозанятая <span class="todo">ИНН</span></span>
+      <span>hello@psiholog-boeva.ru</span>
+      <span><a href="https://max.ru/u/f9LHodD0cOIgkz4kgSukuugV9XFVfR7XS1mcBtYtbZiB4TK2472pME6WOes" target="_blank" rel="noopener">Макс</a> · <a href="https://t.me/psiholog_boeva" target="_blank" rel="noopener">Telegram</a> · <span class="todo">WhatsApp</span></span>
+    </div>
+    <div class="col sos">
+      <h4>Если нужна помощь сейчас</h4>
+      <span><b>051</b> · неотложная психологическая помощь (с мобильного +7 495 051)</span>
+      <span><b>+7 495 989 50 50</b> · экстренная помощь МЧС России</span>
+    </div>
+    <div class="col">
+      <h4>Документы</h4>
+      <a href="https://psiholog-boeva.ru/policy/" target="_blank" rel="noopener">Обработка персональных данных</a>
+      <a href="https://psiholog-boeva.ru/privacy/" target="_blank" rel="noopener">Политика конфиденциальности</a>
+      <span class="todo">Оферта: перенос и отмена</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Макет окна Timepad. На сайте его заменит настоящий виджет Timepad (popup), данные уходят только в Timepad -->
+<dialog id="tpDlg"><div class="tp">
+  <div class="tp-head"><span><b>timepad</b> · регистрация</span><span>макет окна</span></div>
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <div class="tp-body">
+    <div class="tp-sum" id="tpSum"></div>
+    <label for="tName">Имя<input type="text" id="tName" autocomplete="given-name"></label>
+    <label for="tSurname">Фамилия<input type="text" id="tSurname" autocomplete="family-name"></label>
+    <label for="tMail">E-mail<input type="email" id="tMail" autocomplete="email"></label>
+    <label for="tPhone">Телефон<input type="tel" id="tPhone" autocomplete="tel" placeholder="+7"></label>
+    <label class="chk" for="tAgree"><input type="checkbox" id="tAgree"><span>Принимаю договор-оферту и даю согласие на обработку персональных данных</span></label>
+    <button class="tp-pay" id="tpPay" disabled>Оплатить</button>
+    <p class="tp-mark">В настоящем окне - оплата картой или СБП и чек от Timepad</p>
+  </div>
+</div></dialog>
+
+<dialog id="thanksDlg" style="background:var(--ink)"><div class="thanks">
+  <button class="x" data-close aria-label="Закрыть" style="color:var(--paper)">×</button>
+  <span class="tag">[ Оплачено ]</span>
+  <h3>Вы записаны</h3>
+  <p id="thanksWhat"></p>
+  <p>Билет пришёл на почту. Включите напоминания: пришлём подтверждение, напомним за день и за 2 часа до встречи.</p>
+  <div class="btns">
+    <button class="btn mint" data-bot="Макс">Напоминания в Макс</button>
+    <button class="btn ghost" data-bot="Telegram" style="color:var(--paper)">в Telegram</button>
+  </div>
+  <p style="font-size:13px">Бот попросит нажать «Поделиться номером» - тем же, что вы указали при записи. Это нужно один раз.</p>
+</div></dialog>
+
+<div class="cookie" id="cookie" hidden><div class="in">
+  <span>Сайт использует cookie и Яндекс Метрику. <a href="https://psiholog-boeva.ru/privacy/" target="_blank" rel="noopener">Подробнее</a></span>
+  <button class="btn noarrow" id="cookieOk" style="padding:9px 16px">Понятно</button>
+</div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ===== Пример расписания в форме, как его отдаёт Timepad: событие + типы билетов-слоты.
+   На готовом сайте этот массив заменят данные из API Timepad Яны. ===== */
+const KIND = {
+  consult: { name: "Консультация", c: "var(--c-consult)" },
+  art:     { name: "Арт-терапия", c: "var(--c-art)" },
+  sem:     { name: "Семинар для родителей", c: "var(--c-sem)" }
+};
+function consultMonth(y, m, taken) {
+  const out = [];
+  const days = new Date(y, m + 1, 0).getDate();
+  for (let d = 1; d <= days; d++) {
+    const dt = new Date(y, m, d);
+    if (![1, 3, 5].includes(dt.getDay())) continue;
+    const slots = ["10:00", "12:00", "16:00", "18:00"].map(t => ({ t, free: !taken.includes(`${d} ${t}`) }));
+    out.push({ kind: "consult", day: d, title: "Индивидуальная консультация", info: ["онлайн", "50 минут", "5 500 ₽"], slots, price: 5500 });
+  }
+  return out;
+}
+const DATA = {
+  "2026-11": [
+    ...consultMonth(2026, 10, ["2 10:00", "2 12:00", "4 16:00", "6 10:00", "6 12:00", "6 16:00", "6 18:00", "9 12:00", "13 10:00"]),
+    { kind: "art", day: 15, title: "Цвет моего настроения", info: ["мини-группа", "2,5 часа", "осталось 3 места"], slots: [{ t: "12:00", free: true }], price: 3000 },
+    { kind: "sem", day: 22, title: "Кризис трёх лет без крика", info: ["онлайн", "2 часа", "осталось 12 мест"], slots: [{ t: "11:00", free: true }], price: 2500 },
+    { kind: "art", day: 29, title: "Коллаж «Мои опоры»", info: ["мини-группа", "2,5 часа", "мест нет"], slots: [{ t: "12:00", free: false }], price: 3000 }
+  ],
+  "2026-12": [
+    ...consultMonth(2026, 11, ["2 10:00"]),
+    { kind: "sem", day: 13, title: "Подросток закрылся: как вернуть разговор", info: ["онлайн", "2 часа", "осталось 20 мест"], slots: [{ t: "11:00", free: true }], price: 2500 }
+  ]
+};
+const MONTHS = Object.keys(DATA).sort();
+const MN = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+const MG = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+const WD = ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"];
+let mi = 0, selDay = null;
+const on = { consult: true, art: true, sem: true };
+
+function evs(key) { return (DATA[key] || []).filter(e => on[e.kind]); }
+function render() {
+  const key = MONTHS[mi], [y, m] = key.split("-").map(Number);
+  document.getElementById("mtitle").textContent = MN[m - 1] + " " + y;
+  document.getElementById("prev").disabled = mi === 0;
+  document.getElementById("next").disabled = mi === MONTHS.length - 1;
+  const list = evs(key);
+  const g = document.getElementById("grid");
+  let h = ["пн","вт","ср","чт","пт","сб","вс"].map(w => `<div class="wd">${w}</div>`).join("");
+  const first = (new Date(y, m - 1, 1).getDay() + 6) % 7;
+  for (let i = 0; i < first; i++) h += "<span></span>";
+  const len = new Date(y, m, 0).getDate();
+  const now = new Date();
+  for (let d = 1; d <= len; d++) {
+    const de = list.filter(e => e.day === d);
+    const free = de.some(e => e.slots.some(s => s.free));
+    const isToday = now.getFullYear() === y && now.getMonth() === m - 1 && now.getDate() === d;
+    const dots = de.map(e => `<i style="--c:${KIND[e.kind].c}"></i>`).join("");
+    if (de.length) h += `<button class="day has ${free ? "" : "full"} ${selDay === d ? "sel" : ""} ${isToday ? "today" : ""}" data-d="${d}" aria-label="${d} ${MG[m - 1]}${free ? ", есть окна" : ", мест нет"}"><span>${d}</span><span class="dots">${dots}</span></button>`;
+    else h += `<span class="day ${isToday ? "today" : ""}"><span>${d}</span></span>`;
+  }
+  g.innerHTML = h;
+  g.querySelectorAll(".day.has").forEach(b => b.addEventListener("click", () => { selDay = +b.dataset.d; render(); }));
+  renderPlan(key, list);
+}
+function renderPlan(key, list) {
+  const [y, m] = key.split("-").map(Number);
+  const p = document.getElementById("plan");
+  if (!selDay || !list.some(e => e.day === selDay)) {
+    const kinds = [...new Set(list.map(e => e.kind))];
+    const missing = Object.keys(KIND).filter(k => on[k] && !kinds.includes(k)).map(k => KIND[k].name.toLowerCase());
+    const groups = list.filter(e => e.kind !== "consult");
+    p.innerHTML = `<h3>${MN[m - 1]}: что есть</h3>` +
+      (groups.length ? groups.map(e => `<div class="ev" style="--c:${KIND[e.kind].c}"><span class="kind">${KIND[e.kind].name} · ${e.day} ${MG[m - 1]}</span><h4>${e.title}</h4><div class="info">${e.info.map(i => `<span>${i}</span>`).join("")}</div><div><button class="slot" data-jump="${e.day}">Открыть день</button></div></div>`).join("") : "") +
+      (list.some(e => e.kind === "consult") ? `<p class="empty">Консультации: пн, ср, пт. Выберите день в календаре, чтобы увидеть свободные окна.</p>` : "") +
+      (missing.length ? `<p class="empty">В ${MG[m - 1] === "ноября" ? "ноябре" : MG[m - 1] === "декабря" ? "декабре" : "этом месяце"} нет: ${missing.join(", ")}.</p>` : "");
+    p.querySelectorAll("[data-jump]").forEach(b => b.addEventListener("click", () => { selDay = +b.dataset.jump; render(); }));
+    return;
+  }
+  const dt = new Date(y, m - 1, selDay);
+  const de = list.filter(e => e.day === selDay);
+  p.innerHTML = `<h3>${selDay} ${MG[m - 1]}, ${WD[dt.getDay()]}</h3>` + de.map((e, i) => `
+    <div class="ev" style="--c:${KIND[e.kind].c}">
+      <span class="kind">${KIND[e.kind].name}</span>
+      <h4>${e.title}</h4>
+      <div class="info">${e.info.map(x => `<span>${x}</span>`).join("")}</div>
+      <div class="slots">${e.slots.map(s => `<button class="slot" ${s.free ? "" : "disabled"} data-i="${i}" data-t="${s.t}">${s.t}</button>`).join("")}</div>
+    </div>`).join("");
+  p.querySelectorAll(".slot:not(:disabled)").forEach(b => b.addEventListener("click", () => openTp(de[+b.dataset.i], selDay, m - 1, b.dataset.t)));
+}
+document.getElementById("prev").addEventListener("click", () => { mi--; selDay = null; render(); });
+document.getElementById("next").addEventListener("click", () => { mi++; selDay = null; render(); });
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  on[c.dataset.f] = !on[c.dataset.f]; c.setAttribute("aria-pressed", on[c.dataset.f]); render();
+}));
+document.querySelectorAll("[data-go]").forEach(c => c.addEventListener("click", () => {
+  Object.keys(on).forEach(k => { on[k] = k === c.dataset.go; document.querySelector(`.chip[data-f="${k}"]`).setAttribute("aria-pressed", on[k]); });
+  selDay = null; render(); document.getElementById("raspisanie").scrollIntoView();
+}));
+
+/* окно Timepad (макет) → наш экран «спасибо» */
+const tp = document.getElementById("tpDlg"), th = document.getElementById("thanksDlg");
+let pick = null;
+function openTp(ev, d, m, t) {
+  pick = { ev, d, m, t };
+  document.getElementById("tpSum").innerHTML = `<b>${KIND[ev.kind].name}: ${ev.title}</b><br>${d} ${MG[m]}, ${t} · ${ev.price.toLocaleString("ru-RU")} ₽`;
+  tp.showModal();
+}
+const ids = ["tName", "tSurname", "tMail", "tPhone"].map(i => document.getElementById(i));
+const agree = document.getElementById("tAgree"), pay = document.getElementById("tpPay");
+function chk() { pay.disabled = !(ids.every(i => i.value.trim()) && document.getElementById("tPhone").value.replace(/\D/g, "").length >= 10 && agree.checked); }
+ids.forEach(i => i.addEventListener("input", chk)); agree.addEventListener("change", chk);
+pay.addEventListener("click", () => {
+  tp.close();
+  document.getElementById("thanksWhat").textContent = `${KIND[pick.ev.kind].name} · ${pick.d} ${MG[pick.m]}, ${pick.t}`;
+  th.showModal();
+});
+document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => b.closest("dialog").close()));
+document.querySelectorAll("dialog").forEach(d => d.addEventListener("click", e => { if (e.target === d) d.close(); }));
+document.querySelectorAll("[data-bot]").forEach(b => b.addEventListener("click", () => toast(`Здесь откроется бот Яны в ${b.dataset.bot} с кнопкой «Поделиться номером»`)));
+
+function toast(t) { const el = document.getElementById("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.k); toast.k = setTimeout(() => el.hidden = true, 3200); }
+
+const tg = document.getElementById("toggleTodo");
+tg.addEventListener("change", () => document.body.classList.toggle("clean", tg.checked));
+const ck = document.getElementById("cookie");
+let seen = false; try { seen = localStorage.getItem("ck") === "1"; } catch (e) {}
+if (!seen) ck.hidden = false;
+document.getElementById("cookieOk").addEventListener("click", () => { ck.hidden = true; try { localStorage.setItem("ck", "1"); } catch (e) {} });
+
+render();
+</script>
+</body>
+</html>
